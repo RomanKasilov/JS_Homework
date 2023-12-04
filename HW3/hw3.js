@@ -4,8 +4,8 @@ for (let i = 0; i < 10; i++) {
 }
 // - За допомогою циклу for і document.write() вивести 10 блоків div c довільним текстом і індексом всередині
 
-for (let i = 0, n = 1; i < 10; i++, n++) {
-    document.write(`<div>Lorem index=${n}</div>`)
+for (let i = 0; i < 10; i++) {
+    document.write(`<div>Lorem index=${i}</div>`)
 }
 // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом всередині.
 
@@ -17,11 +17,10 @@ while (a < 20) {
 // - За допомогою циклу while вивести в документ 20 блоків h1 c довільним текстом і індексом всередині.
 
 let b = 0;
-c = 1;
 while (b < 20) {
-    document.write(`<h1>Lorem ipsum. index=${c}</h1>`)
-    b++;
-    c++
+    document.write(`<h1>Lorem ipsum. index=${b}</h1>`)
+    b++
+
 }
 
 //  Використовуючи данні з масиву, побудувати список з даними з масивe

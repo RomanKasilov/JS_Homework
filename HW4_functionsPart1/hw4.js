@@ -48,25 +48,24 @@ function uList(text) {
 uList('Lorem ipsum dolor sit amet.')
 
 // - створити функцію яка створює ul з трьома елементами li. Текст li задати через аргумент всім однаковий. Кількість li визначається другим аргументом, який є числовим (тут використовувати цикл)
-function ulList_lenght(text, lenght) {
+function ulList_length(text, length) {
     document.write(`<ul>`)
-    for (let i = 0; i < lenght; i++) {
+    for (let i = 0; i < length; i++) {
         document.write(`<li>${text}</li> `)
     }
     document.write(`</ul>`)
 }
 
-ulList_lenght('Lorem ipsum dolor.', 5)
+ulList_length('Lorem ipsum dolor.', 5)
 
 // - створити функцію яка приймає масив примітивних елементів (числа,стрінги,булеві), та будує для них список
 function arrayItemList() {
-    for (const item of arguments) {
         document.write(`<ul>`)
-        {
+    for (const item of arguments) {
+
             document.write(`<li>${item}</li> `)
         }
         document.write(`</ul>`)
-    }
 }
 
 arrayItemList(1, 2, true, 'abc', {id: 0, name: 'user'}, [1, 2, 3]);
@@ -92,7 +91,7 @@ function minNumber() {
     return min;
 }
 
-console.log('min number: ' + minNumber(1, 3, 10, 12, 11, 4, 9, 5, 3, 14, 22, 7));
+console.log('min number: ' + minNumber(1, 3, 10, -12, 11, 4, 9, 5, -3, 14, 22, 7));
 
 // - створити функцію sum(arr)яка приймає масив чисел, сумує значення елементів масиву та повертає його. Приклад sum([1,2,10]) //->13
 function sum(arr) {

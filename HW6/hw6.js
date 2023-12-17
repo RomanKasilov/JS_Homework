@@ -30,12 +30,12 @@ let stringsArray = arrayOfNumbers.map(value => value + '');
 
 // - створити функцію sortNums(direction), яка прймає масив чисел, та сортує його від більшого до меньшого, або навпаки в залежності від значення аргументу direction.
 const nums = [11, 21, 3];
-let sortNums = (array, direction) =>{
+let sortNums = (array, direction) => {
     switch (direction) {
         case 'ascending':
-           return  array.sort((num1, num2) => num1 - num2);
+            return array.sort((num1, num2) => num1 - num2);
         case 'descending':
-            return  array.sort((num1, num2) => num2-num1);
+            return array.sort((num1, num2) => num2 - num1);
         default:
             console.log("Please,choose direction: 'ascending' or 'descending'");
     }
@@ -54,22 +54,79 @@ let coursesAndDurationArray = [
     {title: 'Frontend', monthDuration: 4}
 ];
 //  -- відсортувати його за спаданням за monthDuration
-
-coursesAndDurationArray.sort((monthDuration1, monthDuration2) => monthDuration1-monthDuration2);
+const sortOfMonthDuration = coursesAndDurationArray.sort((a, b) => b.monthDuration - a.monthDuration);
+// console.log(sortOfMonthDuration);
 
 //  -- відфільтрувати , залишивши тільки курси з тривалістю більше 5 місяців
+const filterOfMonthDuration = coursesAndDurationArray.filter(value => value.monthDuration > 5);
+// console.log(filterOfMonthDuration);
+
+
 //  -- за допомоги map перетворити кожен елемент на наступний тип {id,title,monthDuration}
+const mapId = coursesAndDurationArray.map((keys, index) => {
+    return {
+        id: index + 1, //новий ключ id
+        ...keys // зберігаємо значення вже існуючих ключів
+    }
+});
+// console.log(mapId);
+
+
 //  =========================
 //  описати колоду карт (від 6 до туза без джокерів)
+
+const labels = ['spade', 'diamond', 'heart', 'club'];
+const cards = [6, 7, 8, 9, 10, 'jack', 'queen', 'king', 'ace'];
+// const jokers = [{card: 'joker', color: 'red'}, {card: 'joker', color: 'black'}];//джокери
+
+let cardsDeck = []; // наша колода
+labels.forEach(value => {       //створюємо 36 карт
+    for (const card of cards) {
+        cardsDeck.push({
+            card: card,
+            label: value
+        });
+    }
+});
+// console.log(cardsDeck);
+cardsDeck.map(value => {        //додаємо ключ color:
+    if (value.label === 'spade' || value.label === 'club') {
+        value.color = 'black'
+    } else {
+        value.color = 'red'
+    }
+});
+// cardsDeck = cardsDeck.concat(jokers); // додаємо масив з джокерами jokers[]
+// console.log(cardsDeck);
+
+
 //  - знайти піковий туз
+const filter = cardsDeck.filter;
+let aceSpade = cardsDeck.filter(value => value.label === 'spade' && value.card === 'ace');
+console.log(cardsDeck);
+console.log(aceSpade);
 //  - всі шістки
+let allSix = cardsDeck.filter(value => value.card === 6);
+console.log(allSix);
+
 //  - всі червоні карти
+let allRed = cardsDeck.filter(value => value.color === "red");
+console.log(allRed);
+
 //  - всі буби
+let allDiamonds = cardsDeck.filter(value => value.label === 'diamond');
+console.log(allDiamonds);
+
 //  - всі трефи від 9 та більше
+let someClubs = cardsDeck.filter(value => value.label.startsWith('clu')); // фільтр за допомоги startsWith
+// console.log(someClubs);
+someClubs.splice(0, 3);
+console.log(someClubs);
+
 //
 // {
-//     cardSuit: '', // 'spade', 'diamond','heart', 'clubs'
-//     value: '', // '6'-'10', 'ace','jack','queen','king','joker'
+//     label: '', // 'spade', 'diamond','heart', 'clubs'
+//     card: '', // '6'-'10', 'ace','jack','queen','king','joker'
 //     color:'', // 'red','black'
 // }
 //
@@ -82,6 +139,7 @@ coursesAndDurationArray.sort((monthDuration1, monthDuration2) => monthDuration1-
 //     hearts:[],
 //     clubs:[]
 // }
+
 // =========================
 // взяти з arrays.js (який лежить в папці 2023 plan) масив coursesArray
 // --написати пошук всіх об'єктів, в який в modules є sass

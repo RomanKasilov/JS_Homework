@@ -22,9 +22,12 @@ let arr = stringToArray(str);
 
 // - є масив чисел [10,8,-7,55,987,-1011,0,1050,0] . за допомоги map  перетворити всі об'єкти в масиві на стрінгові.
 let arrayOfNumbers = [10, 8, -7, 55, 987, -1011, 0, 1050, 0];
-let stringsArray = arrayOfNumbers.map(value => value + '');
+// let stringsArray = arrayOfNumbers.map(value => value + '');
+let stringsArray = arrayOfNumbers.map(value => `${value}`);
 // let stringsArray = arrayOfNumbers.map(value => String(value));
 
+
+// console.log(stringsArray);
 // stringsArray.forEach(value => console.log(typeof value));
 
 

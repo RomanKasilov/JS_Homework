@@ -143,7 +143,7 @@ car1.info();
 
 // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car
 
-let card1 = car1.addDriver({name: 'kokos', age: 1990, wife:{name: 'sliva', age: 1992}});
+let card1 = car1.addDriver({name: 'kokos', age: 1990, wife: {name: 'sliva', age: 1992}});
 car1.info.apply(card1);
 
 console.log('------------');
@@ -191,7 +191,7 @@ car2.info();
 // -- changeYear (newValue) - змінює рік випуску на значення newValue
 // console.log(car2.changeYear(1998));
 // -- addDriver (driver) - приймає об'єкт який "водій" з довільним набором полів, і додає його в поточний об'єкт car
-let card2 = car2.addDriver({name: 'kokos', age: 1990, wife:{name: 'sliva', age: 1992}});
+let card2 = car2.addDriver({name: 'kokos', age: 1990, wife: {name: 'sliva', age: 1992}});
 // car1.info.apply(card1);
 car2.info();
 // car2.info();
@@ -223,9 +223,21 @@ class Prinz extends Cinderella {     // створюємо клас для Пр�
         super(name, age);
         this.lookingForSize = lookingForSize;
     }
+
+    cinderella = (array_of_Cinderellas) => {
+        let result = array_of_Cinderellas.find(cinderella => cinderella.feetSize === this.lookingForSize);
+       if (!result){                                // перевірка на наявність співпадіння
+            console.log('Method have No matches')}
+       else {
+           console.log(result);
+       }
+    }
 }
 
+
 let prinz1 = new Prinz('Lancelott', 22, 39);      //створюємо Принца
+
+
 //     За допомоги циклу знайти яка попелюшка повинна бути з принцом.
 let findCinderella = (cinderellas_array, prinz) => {
     let arr = [];
@@ -238,16 +250,16 @@ let findCinderella = (cinderellas_array, prinz) => {
             }
         }
     }
-
-    if (arr.length>0){
+    if (arr.length > 0) {
         return arr;
-    }
-    else {
-        console.log('Prinz, Sorry, but No matches now...Try again')//  якщо нема совпадань за розміром (arr undefined)
+    } else {
+        return 'Prinz, Sorry, but No matches for you...Try to refresh the page';//  якщо нема совпадань за розміром (arr undefined)
     }
 }
-console.log(findCinderella(cinderellas, prinz1)); // може видавати undefined якщо нема співпадінь
+console.log(findCinderella(cinderellas, prinz1));
 
 //     Додатково, знайти необхідну попелюшку за допомоги функції масиву find та відповідного колбеку
-let prinz1NeedsCinderella = cinderellas.find(cinderella => cinderella.feetSize === prinz1.lookingForSize);
-console.log(prinz1NeedsCinderella);
+
+// let prinz1NeedsCinderella = cinderellas.find(cinderella => cinderella.feetSize === prinz1.lookingForSize);
+// console.log(prinz1NeedsCinderella);
+prinz1.cinderella(cinderellas); // метод класу Prinz

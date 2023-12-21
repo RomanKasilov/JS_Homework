@@ -253,7 +253,7 @@ let findCinderella = (cinderellas_array, prinz) => {
     if (arr.length > 0) {
         return arr;
     } else {
-        return 'Prinz, Sorry, but No matches for you...Try to refresh the page';//  якщо нема совпадань за розміром (arr undefined)
+        return `${prinz.name}, Sorry, but No matches for you...Try to refresh the page`;//  якщо нема совпадань за розміром (arr undefined)
     }
 }
 console.log(findCinderella(cinderellas, prinz1));

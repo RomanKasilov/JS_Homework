@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+}
+
+/* ['Main','Products','About us','Contacts'] array*/
+.task2 {
+    background: linear-gradient(to bottom right, rgba(255, 0, 0, 0.8), rgba(0, 0, 0, 0.8));
+    width: 200px;
+    padding: 20px;
+    margin: 0;
+    color: white;
+}
+
+#menu {
+    color: mediumpurple;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+
+/* wrapper() styles for coursesAndDurationArray*/
+.item {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+}
+
+.heading {
+    font-size: 24px;
+}
+
+
+/* simpsons array*/
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.member{
+    display: flex;
+    width: 49vw;
+
+}
+.simpson img{
+    width: 50%;
+}
+.description{
+    padding-left: 20px;
+    width: 50%;
+}
+.description p:nth-child(1){
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: underline;
+}

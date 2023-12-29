@@ -267,24 +267,36 @@ for (const element of coursesArray) {
     const hour = createElement('p');
     hour.innerText = element.hourDuration;
 
-    let modules_block = createElement('div');
-    let ul = createElement('ul');
-    modules_block.appendChild(ul);
+    let modules = createElement('div');
+
 
     wrapper_box.appendChild(box);
-    box.append(title, duration, modules_block);
+    box.append(title, duration, modules);
     duration.append(month, hour);
 
     for (const key in element) {
+        let list = createElement('div');
+
         if (Array.isArray(element[key])) {
             let module = element[key];
-            for (let item of module) {
-                let li = createElement('li');
-                li.innerText = item;
-                ul.appendChild(li);
+            function recursion(module) {
+                let ul = createElement('ul');
+                list.appendChild(ul);
+                for (let item of module) {
+                    let li = createElement('li');
+                    li.innerText = item;
+                    ul.appendChild(li);
+                    if (Array.isArray(item)){
+                        recursion(item);
+                    }
+                }
             }
 
+
+
+
         }
+        modules.appendChild(list);
     }
 }
 

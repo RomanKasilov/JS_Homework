@@ -186,7 +186,8 @@ let coursesArray = [
         title: 'JavaScript Complex',
         monthDuration: 5,
         hourDuration: 909,
-        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js']
+        modules: ['html', 'css', 'js', 'mysql', {a:'a',b:'b',c:'c'},'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js'],
+        mentors: [ '123','122']
     },
     {
         title: 'Java Complex',
@@ -255,6 +256,7 @@ let createElement = (name) => document.createElement(name);
 let wrapper_box = createElement('div');
 wrapper_box.classList.add('coursesArray');
 document.body.appendChild(wrapper_box);     // обгортка для массиву coursesArray[]
+
 for (const element of coursesArray) {
     const box = createElement('div');// обгортка для кожного ел-та coursesArray[]
     box.classList.add('course');
@@ -275,28 +277,33 @@ for (const element of coursesArray) {
     duration.append(month, hour);
 
     for (const key in element) {
-        let list = createElement('div');
-
         if (Array.isArray(element[key])) {
             let module = element[key];
-            function recursion(module) {
-                let ul = createElement('ul');
-                list.appendChild(ul);
-                for (let item of module) {
+            let ul = createElement('ul');
+            ul.innerText = key;
+            modules.appendChild(ul);
+
+            function recursion(array , position) {
+
+                for (let item of array) {
                     let li = createElement('li');
-                    li.innerText = item;
-                    ul.appendChild(li);
+                    position.appendChild(li)
                     if (Array.isArray(item)){
-                        recursion(item);
+                        let arr = createElement('ul');
+                        li.appendChild(arr);
+                        for (let itemElement of item) {
+                            recursion(itemElement, arr);
+                        }
+                    }else {
+                        li.innerText = item;
+                        position.appendChild(li)
                     }
                 }
             }
-
-
-
+            recursion(module, ul);
 
         }
-        modules.appendChild(list);
+
     }
 }
 

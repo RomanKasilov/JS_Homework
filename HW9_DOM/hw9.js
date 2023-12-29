@@ -181,13 +181,16 @@ simpsonsInfo()
 //     Цикл в циклі
 // - Є масив coursesArray котрий лежить в arrays.js (на цей момент ви вже знаєте де він знаходиться)
 
+// для перевірки роботи рекурсії додатково додав характеристику-массив mentors: та  modules  - з вкладеним массивом
+//у перший об'єкт coursesArray[]
+
 let coursesArray = [
     {
         title: 'JavaScript Complex',
         monthDuration: 5,
         hourDuration: 909,
-        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', ['bow hunting', 'cow driving', 'bingo playing']],
-        mentors: ['123', '122']
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', ['bow hunting', 'cow riding','bingo playing']],
+        mentors: ['kokos', 'babos', 'sliva']
     },
     {
         title: 'Java Complex',
@@ -252,24 +255,26 @@ let coursesArray = [
     }
 ];
 
-let createElement = (name) => document.createElement(name); // для створення нових HTML-елементів
+let createElement = (name) => document.createElement(name); //ф-ія для створення нових HTML-елементів
 let wrapper_box = createElement('div');
-wrapper_box.classList.add('coursesArray');
+wrapper_box.classList.add('flex', 'coursesArray');
 document.body.appendChild(wrapper_box);     // обгортка для массиву coursesArray[]
 
 for (const element of coursesArray) {
-    const box = createElement('div');// обгортка для кожного ел-та coursesArray[]
-    box.classList.add('course');
+    const box = createElement('div');// обгортка для кожного ел-та coursesArray[] кожний курс массиву
+    box.classList.add('box','flex');
     const duration = createElement('div');    // обгортка для monthDuration + hourDuration
-
+duration.classList.add('duration', 'flex')
     const title = createElement('h2');
     title.innerText = element.title;
     const month = createElement('p');
-    month.innerText = element.monthDuration;
+    month.innerText = `${element.monthDuration} months!`;
     const hour = createElement('p');
-    hour.innerText = element.hourDuration;
+    hour.innerText = `${element.hourDuration} hours!!!`;
 
-    let modules = createElement('div');
+    let modules = createElement('div'); //
+    modules.classList.add('modules','flex');
+
 
 
     wrapper_box.appendChild(box);
@@ -281,21 +286,25 @@ for (const element of coursesArray) {
         if (Array.isArray(element[key])) {
             let module = element[key];
             let ul = createElement('ul');
-            ul.innerText = key;
+            ul.classList.add('main_ul')
+            let span = createElement('span');
+
+            span.innerText = `${key}:`;
             modules.appendChild(ul);
+            ul.appendChild(span);
 
             // recursion() ф-ія з рекурсією для створення списків з массивів
             recursion(module, ul);
             function recursion(array, position) {
-
                 for (let item of array) {
                     let li = createElement('li');
-                    position.appendChild(li)
+                    position.appendChild(li)        // аргумент position дозволяє зробити список у списку
                     console.log(item, typeof item);
-                    if (Array.isArray(item)) {          //
+                    if (Array.isArray(item)) {          // перевірка чи є массив в массиві
                         let arr = createElement('ul');
+                        arr.classList.add('rest_ul')
                         li.appendChild(arr);
-                        recursion(item, arr);
+                        recursion(item, arr);       // рекурсія
                     } else {
                         li.innerText = item;
                         position.appendChild(li)

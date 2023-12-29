@@ -186,8 +186,8 @@ let coursesArray = [
         title: 'JavaScript Complex',
         monthDuration: 5,
         hourDuration: 909,
-        modules: ['html', 'css', 'js', 'mysql', {a:'a',b:'b',c:'c'},'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js'],
-        mentors: [ '123','122']
+        modules: ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', ['bow hunting', 'cow driving', 'bingo playing']],
+        mentors: ['123', '122']
     },
     {
         title: 'Java Complex',
@@ -252,7 +252,7 @@ let coursesArray = [
     }
 ];
 
-let createElement = (name) => document.createElement(name);
+let createElement = (name) => document.createElement(name); // для створення нових HTML-елементів
 let wrapper_box = createElement('div');
 wrapper_box.classList.add('coursesArray');
 document.body.appendChild(wrapper_box);     // обгортка для массиву coursesArray[]
@@ -277,30 +277,33 @@ for (const element of coursesArray) {
     duration.append(month, hour);
 
     for (const key in element) {
+        // console.log(element[key],typeof element[key])
         if (Array.isArray(element[key])) {
             let module = element[key];
             let ul = createElement('ul');
             ul.innerText = key;
             modules.appendChild(ul);
 
-            function recursion(array , position) {
+            // recursion() ф-ія з рекурсією для створення списків з массивів
+            recursion(module, ul);
+            function recursion(array, position) {
 
                 for (let item of array) {
                     let li = createElement('li');
                     position.appendChild(li)
-                    if (Array.isArray(item)){
+                    console.log(item, typeof item);
+                    if (Array.isArray(item)) {          //
                         let arr = createElement('ul');
                         li.appendChild(arr);
-                        for (let itemElement of item) {
-                            recursion(itemElement, arr);
-                        }
-                    }else {
+                        recursion(item, arr);
+                    } else {
                         li.innerText = item;
                         position.appendChild(li)
                     }
                 }
             }
-            recursion(module, ul);
+
+
 
         }
 
@@ -314,3 +317,10 @@ for (const element of coursesArray) {
 // Приклад структири знаходиться у файлі example.png який лежить в папці з поточним фйлом
 
 // ------------------
+
+//
+// let xxx = ['html', 'css', 'js', 'mysql', 'mongodb', 'react', 'angular', 'aws', 'docker', 'git', 'node.js', ['bow hunting', 'cow driving', 'bingo playing']];
+// for (let x of xxx) {
+//     // console.log(typeof xxx);
+//     console.log(typeof x)
+// }

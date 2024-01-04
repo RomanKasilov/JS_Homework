@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>sessionsInfo</title>
+
+</head>
+<body>
+<h2>date of main.html sessions:</h2>
+<script>
+    let sessions = JSON.parse(localStorage.getItem('sessions') )?? [];
+    if (sessions.length !==0){              // перевірка наявності об'єктів в массиві sessions для ітерації
+        for (let session of sessions) {
+            const p = document.createElement('p');
+            p.innerText = session.date;
+            document.body.appendChild(p);
+        }
+        }else{
+        document.write('<p>no actions...</p>') // якщо session[] in LocalStorage пустий
+    }
+</script>
+</body>
+</html>

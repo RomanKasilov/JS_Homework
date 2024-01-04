@@ -84,12 +84,14 @@ let step = 10;          // визначає кількість відображ�
 let startIndex = 0;
 let endIndex = startIndex + step;
 
+// створюємо функцію вибору необхідно' кількості об'єктів на сторінку
+// за допомогою arrayOfObjects.slice(startIndex, endIndex);
 const showPage = () => {
     let slice = arrayOfObjects.slice(startIndex, endIndex);
     console.log(arrayOfObjects.slice(startIndex, endIndex));
     console.log(startIndex, endIndex);
 
-    // наповнюємо сторінку  10 елементами
+    // наповнюємо сторінку  вибраними елементами
     let page = [];
     slice.forEach(value => {
 
@@ -98,11 +100,11 @@ const showPage = () => {
         let list = document.createElement('p');
         list.classList.add('list')
         list.innerText = `id: ${object_id}, name: ${object_name}`
-
-        // box.appendChild(list);
+        // механізм перезапису виводимого контенту при використанні конпок
         page.push(list);
         box.replaceChildren(...page);
     })
+    // додаємо перевірки для блокування кнопок
         if (startIndex===0){
             prev_button.setAttribute('disabled','disabled');
         }else {
@@ -115,8 +117,8 @@ const showPage = () => {
         }
 
 }
-showPage();
-    
+showPage(); // викликаємо функцію та створюємо першу пачку елементів
+
 // наповнюємо кнопки
 prev_button.innerText = '<--- PREV PAGE';
 prev_button.addEventListener('click', function () {
@@ -132,16 +134,6 @@ next_button.addEventListener('click', function () {
     showPage()
 });
 
-
-
-
-
-
-
-
-// for (let i = startIndex; i < endIndex; i++) {
-//     const arrayOfObject = arrayOfObjects[i];
-// }
 
 
 // при завантажені сторінки з'являються перші 10 об'єктів.

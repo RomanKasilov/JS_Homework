@@ -80,7 +80,7 @@ let prev_button = document.createElement('button');
 let next_button = document.createElement('button');
 wrapper.append(prev_button, next_button,box);
 
-let step = 14;          // визначає кількість відображаних елементів на сторінці
+let step = 10;          // визначає кількість відображаних елементів на сторінці
 let startIndex = 0;
 let endIndex = startIndex + step;
 

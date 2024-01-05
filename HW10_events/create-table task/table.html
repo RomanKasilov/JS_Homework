@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>table-task</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.-->
+<!-- При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.-->
+<!-- (Додатковачастина для завдання)-->
+<form action="#" name="table_form">
+    <label> Rows:
+        <input type="number" name="row" placeholder="" required>
+    </label> <br>
+    <label> Columns:
+        <input type="number" name="column" placeholder="" required>
+    </label> <br>
+    <label> Text:
+        <input type="text" name="text" placeholder="" required>
+    </label><br>
+    <button id="t_button">Create table</button>
+</form>
+
+<div id="table_wrapper"></div>
+
+<script src="main.js"></script>
+</body>
+</html>

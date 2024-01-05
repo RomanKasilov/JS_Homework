@@ -1,3 +1,5 @@
+console.log(document);
+
 //Стоврити форму з трьома полями для name,sruname,age та кнопкою. При натисканні на кнопку зчитати данні з полів, та вивести об'єкт в документ. Іншими словами : заповниои форму, натиснули кнопку, під формою з'явився блок з вашим об'єктом
 
 // let f1 = document.forms.form1
@@ -78,7 +80,7 @@ document.body.appendChild(wrapper);
 let box = document.createElement("div");
 let prev_button = document.createElement('button');
 let next_button = document.createElement('button');
-wrapper.append(prev_button, next_button,box);
+wrapper.append(prev_button, next_button, box);
 
 let step = 10;          // визначає кількість відображаних елементів на сторінці
 let startIndex = 0;
@@ -105,54 +107,91 @@ const showPage = () => {
         box.replaceChildren(...page);
     })
     // додаємо перевірки для блокування кнопок
-        if (startIndex===0){
-            prev_button.setAttribute('disabled','disabled');
-        }else {
-            prev_button.removeAttribute('disabled');
-        }
-        if (endIndex >=arrayOfObjects.length){
-            next_button.setAttribute('disabled','disabled');
-        }else{
-           next_button.removeAttribute('disabled');
-        }
+    if (startIndex === 0) {
+        prev_button.setAttribute('disabled', 'disabled');
+    } else {
+        prev_button.removeAttribute('disabled');
+    }
+    if (endIndex >= arrayOfObjects.length) {
+        next_button.setAttribute('disabled', 'disabled');
+    } else {
+        next_button.removeAttribute('disabled');
+    }
 
 }
 showPage(); // викликаємо функцію та створюємо першу пачку елементів
+// при завантажені сторінки з'являються перші 10 об'єктів.
 
 // наповнюємо кнопки
+
+// При натисканні prev виводяться попередні 10 об'єктів
 prev_button.innerText = '<--- PREV PAGE';
 prev_button.addEventListener('click', function () {
     endIndex = startIndex;
-    startIndex = startIndex-step;
+    startIndex = startIndex - step;
     showPage()
 });
-
+// При натисканні next виводяться настпні 10 об'єктів
 next_button.innerText = 'NEXT PAGE --->';
 next_button.addEventListener('click', function () {
     startIndex = endIndex;
-    endIndex = endIndex+step;
+    endIndex = endIndex + step;
     showPage()
 });
 
+// =========================
 
-
-// при завантажені сторінки з'являються перші 10 об'єктів.
-// При натисканні next виводяться настпні 10 об'єктів
-// При натисканні prev виводяться попередні 10 об'єктів
-//
-//
-//
-//
 
 // - Створити довільний елемент з id = text та створити кнопку.Використовуючи JavaScript, зробіть так, щоб при натисканні на кнопку зникав елемент з id="text".
-//
-//
+let task = document.createElement('div');
+let text = document.createElement('h2');
+text.setAttribute('id', 'text');
+console.log(text.getAttribute('id'));
+text.innerText = 'Lorem ipsum dolor sit.'
+
+let btn_hide = document.createElement('button');
+btn_hide.innerText = 'Hide';
+btn_hide.addEventListener('click', () => text.style.display = 'none');
+
+let btn_show = document.createElement('button');
+btn_show.innerText = 'Show';
+btn_show.addEventListener('click', () => text.style.display = 'block')
+
+document.body.appendChild(task);
+task.append(text, btn_hide, btn_show);
+
+// =========================
+
 // - створити інпут який приймає вік людини та кнопку яка підтверджує дію.При натисканні на кнопку зчитати інформацію з інпуту та перевірити вік чи меньше він ніж 18, та повідомити про це користувача
+// створюємо форму з інпутом та баттоном
+let form2 = document.createElement('form');
+let age_input = document.createElement('input');
+let age_button = document.createElement('button');
+age_button.innerText = 'check';
+age_input.setAttribute('type', 'number')
+age_input.setAttribute('name', 'age')
+age_input.setAttribute('placeholder', 'enter your age')
+
+console.log(age_input);
+document.body.appendChild(form2);
+form2.append(age_input, age_button);
+
+form2.onsubmit = function (ev) {
+    // console.log(ev);
+    ev.preventDefault()         // зупиняємо дефолтну дію submit (перезаванаження сторінки браузера)
+
+    if (this.age.value >= 18) {
+        alert('age checked!')
+    } else {
+        alert('age is less than 18');
+    }
+
+    ev.target.reset();
+}
+
+
 //
-//
-// *** Створити 3 інпута та кнопку. Один визначає кількість рядків, другий - кількість ячеєк, третій вмиіст ячеєк.
-// При натисканні кнопки, вся ця інформація зчитується і формується табличка, з відповідним вмістом.
-// (Додатковачастина для завдання)
+
 //
 // *** (подібне було вище, але...будьте уважні в другій частині) створити сторінку з довільним блоком, в середині якого є значення "100грн"
 // при перезавантаженні сторінки до значаення додається по 10грн, але !!!

@@ -15,7 +15,6 @@ let caption = document.createElement('caption');
 tr_wrapper = document.createElement('div');
 table.append(caption,tr_wrapper);
 
-
 form.onsubmit = function (ev){
     ev.preventDefault();
     // створюємо заголовок таблиці
@@ -28,7 +27,7 @@ form.onsubmit = function (ev){
     console.log(rows, columns, texts);
 
 //створюємо таблицю
-//     let arr = [];
+    let arr = [];
     for (let i = 0; i < rows; i++) {
         let tr = document.createElement('tr');
 
@@ -37,9 +36,9 @@ form.onsubmit = function (ev){
             td.innerText = `${texts}`;
             tr.appendChild(td);
         }
-        table.appendChild(tr);
+        arr.push(tr);
     }
-
+    tr_wrapper.replaceChildren(...arr);
     // ev.target.reset();
 }
 

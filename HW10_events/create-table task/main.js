@@ -10,9 +10,8 @@ console.log(wrapper);
 //створюємо таблицю із заголовком
 let table = document.createElement('table');
 table.classList.add('table')
-wrapper.appendChild(table);
 let caption = document.createElement('caption');
-table.appendChild(caption);
+
 
 
 form.onsubmit = function (ev){
@@ -40,7 +39,8 @@ form.onsubmit = function (ev){
     }
     table.replaceChildren(caption, ...arr);//попереджаємо дублювання контенту
     // ev.target.reset();
+    wrapper.appendChild(table);
+    table.appendChild(caption);
 }
 
-document.getElementsByTagName()
 

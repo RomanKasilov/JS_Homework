@@ -1,7 +1,27 @@
 
 form{
-
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+    border: 2px rgba(0, 255, 225, 0.81) solid;
+    width: 250px;
+    /*height: 200px;*/
+    padding: 10px;
 }
-.table{
-
+label{
+    display: flex;
+    justify-content: space-between;
+}
+caption{
+    white-space: nowrap;
+    font-weight: bolder;
+    font-size: 1.5rem;
+}
+table{
+    border-spacing: 10px;
+    border: 2px rgba(0, 255, 225, 0.81) solid;
+}
+td{
+text-align: center;
+    border: 2px rgba(255, 0, 221, 0.81) dotted;
 }

@@ -7,17 +7,17 @@ let form = document.forms.table_form;
 console.log(form);
 let wrapper = document.getElementById("table_wrapper");
 console.log(wrapper);
-
+//створюємо таблицю із заголовком
 let table = document.createElement('table');
 table.classList.add('table')
-document.body.appendChild(table);
+wrapper.appendChild(table);
 let caption = document.createElement('caption');
-tr_wrapper = document.createElement('div');
-table.append(caption,tr_wrapper);
+table.appendChild(caption);
+
 
 form.onsubmit = function (ev){
     ev.preventDefault();
-    // створюємо заголовок таблиці
+    // задаємо назву заголовоку
     caption.innerText = 'Your Table'
 
 // виводимо значення інпутів
@@ -38,7 +38,9 @@ form.onsubmit = function (ev){
         }
         arr.push(tr);
     }
-    tr_wrapper.replaceChildren(...arr);
+    table.replaceChildren(caption, ...arr);//попереджаємо дублювання контенту
     // ev.target.reset();
 }
+
+document.getElementsByTagName()
 

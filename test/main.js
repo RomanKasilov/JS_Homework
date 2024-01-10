@@ -25,3 +25,7 @@ form.onsubmit = function (e) {
     }
     document.body.appendChild(table);
 }
+
+addEventListener("click", function () {
+    
+})

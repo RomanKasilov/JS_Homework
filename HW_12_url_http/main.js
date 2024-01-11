@@ -15,7 +15,7 @@ fetch(users_url)
 
             let a = document.createElement('a');
             a.innerText = `${userID} - ${userName}`;
-            a.target = "_blank"
+            a.target = "_blank" // сторінка відкр. у новому вікні
             a.href = "../HW_12_url_http/user_details/user_details.html?user=" + JSON.stringify(user);
             wrapper.appendChild(div);
             div.appendChild(a);

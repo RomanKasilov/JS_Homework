@@ -5,35 +5,25 @@ let wrapper = document.getElementsByClassName('wrapper')[0];
 
 let user = JSON.parse(url.searchParams.get('user'));
 console.log(user);
-function getInfo(object) {
+//використовуємо функцію з  рекурсєію
+function getInfo(object,father,tag) {
+    // object: об'єкт ітерації,
+    // father: вибір батьківського елементу для appendChild,
+    // tag: назва тегу для виводу інфо. (ul,li)
     for (let key in object) {
         // console.log(key);
-        console.log(typeof object[key] !== 'object');
-        // let key = key;
-        // let value = object[key];
-        let ul = document.createElement("ul");
-
+        // console.log(typeof object[key] !== 'object');
         if (typeof object[key] !== 'object'){
-            ul.innerText = `${key}: ${object[key]}`
-            wrapper.appendChild(ul);
+            let place = document.createElement(tag);
+            father.appendChild(place);
+            place.innerText = `${key}: ${object[key]}`
         }else {
+            let ul = document.createElement("ul");
+            father.appendChild(ul);
             ul.innerText = `${key}`
-            let li = document.createElement('li');
 
-            getInfo(object[key]);
-            // let ul = document.createElement('ul');
-            // ul.innerText = `${key}`;
-            // wrapper.appendChild(ul);
-
-            ul.appendChild(li);
-
-            // getInfo(object[key]);
-
+            getInfo(object[key],ul, 'li');
         }
     }
 }
-
-getInfo(user,);
-
-// let obj = {};
-// console.log(typeof obj === 'object');
+getInfo(user,wrapper,'ul');
